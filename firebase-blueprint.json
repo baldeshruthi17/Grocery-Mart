@@ -1,0 +1,90 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User account information, role, and registered delivery addresses.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "role": { "type": "string", "enum": ["customer", "admin"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "name"]
+    },
+    "Product": {
+      "title": "Grocery Product",
+      "description": "Information about a product sold in the store catalog.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "category": { "type": "string" },
+        "price": { "type": "number" },
+        "mrp": { "type": "number" },
+        "unit": { "type": "string" },
+        "description": { "type": "string" },
+        "image": { "type": "string" },
+        "stock": { "type": "number" },
+        "isAvailable": { "type": "boolean" },
+        "discount": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "shopId": { "type": "string" },
+        "shopName": { "type": "string" }
+      },
+      "required": ["id", "name", "price", "category", "stock"]
+    },
+    "Order": {
+      "title": "Customer Order",
+      "description": "A grocery delivery order transaction with status details.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "customerName": { "type": "string" },
+        "phone": { "type": "string" },
+        "subtotal": { "type": "number" },
+        "deliveryFee": { "type": "number" },
+        "total": { "type": "number" },
+        "paymentMethod": { "type": "string" },
+        "status": { "type": "string" },
+        "orderDate": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "customerName", "total", "status"]
+    },
+    "DeliveryPartner": {
+      "title": "Delivery Partner / Rider",
+      "description": "Registered delivery partner and vehicle information.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "vehicle": { "type": "string" },
+        "status": { "type": "string", "enum": ["active", "inactive"] }
+      },
+      "required": ["id", "name", "phone", "status"]
+    }
+  },
+  "firestore": {
+    "users": {
+      "schema": "User",
+      "description": "Collection of customer and admin profiles"
+    },
+    "products": {
+      "schema": "Product",
+      "description": "Collection of grocery products in the marketplace catalog"
+    },
+    "orders": {
+      "schema": "Order",
+      "description": "Collection of placed customer orders"
+    },
+    "deliveryPartners": {
+      "schema": "DeliveryPartner",
+      "description": "Collection of delivery partner / rider registrations"
+    }
+  }
+}
