@@ -1,6 +1,0 @@
-{
-  "name": "JangaonMart",
-  "description": "Your Local Grocery, Delivered in 60 Minutes - Hyperlocal grocery delivery for Jangaon, Telangana, India",
-  "requestFramePermissions": ["geolocation"],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
